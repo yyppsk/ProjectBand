@@ -40,6 +40,7 @@
             $user = "rootuser";
             $password = "123123test";
             $db = "projectband_prod";
+            $var = 1;
             // Create connection
             $conn = mysqli_connect($server,$user,$password,$db);
             $sql = "SELECT * FROM students";
@@ -67,7 +68,7 @@
                       <img src="<?php echo $row['profilepicture']; ?>" style="max-height: 100px;width:100px; border-radius:50%" alt="user_image">
                       </div>
                       <div class="name_bar">
-                        <p><span>1.</span><?php echo $row['name']; ?></p>
+                        <p><span><?php echo $var++?></span><?php echo $row['name']; ?></p>
                         <div class="bar_wrap">
                           <div class="inner_bar" style="width: 95%"></div>
                         </div>
@@ -158,6 +159,7 @@ span {
     $user = "rootuser";
     $password = "123123test";
     $db = "projectband_prod";
+    $var2=1;
     // Create connection
     $conn = mysqli_connect($server,$user,$password,$db);
     $sql = "SELECT * FROM students";
@@ -181,7 +183,7 @@ span {
         //mysqli_close($conn);
     ?>
     <tr>
-                        <td> <font color=#000 size='4vw'> <?php echo $row['id']; ?> </td>
+                        <td> <font color=#000 size='4vw'> <?php echo $var2++?> </td>
                         <td> <font color=#000 size='4vw'><?php echo $row['name']; ?> </td>
                         <td> <font color=#000 size='4vw'><?php echo $row['email']; ?> </td>
                         <td> <font color=#000 size='4vw'><?php echo $row['points']; ?> </td>
