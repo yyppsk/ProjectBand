@@ -202,7 +202,24 @@ span {
                         <td> <font color=#000 size='4vw'> <?php echo $var2++?> </td>
                         <td> <font color=#000 size='4vw'><?php echo $row['name']; ?> </td>
                         <td> <font color=#000 size='4vw'><?php echo $row['email']; ?> </td>
-                        <td> <font color=#000 size='4vw'><?php echo $row['points']; ?> </td>
+                        <td style="background-color:
+                        <?php if ($row['points'] >=3000) {
+                            echo "#a00";
+                          }
+                            else if ($row['points'] <= 2999 && $row['points'] >=2600) {
+                              echo "#FF2400";
+                          }
+                          else if ($row['points'] <= 2599 && $row['points'] >=2400) {
+                            echo "#f77";
+                        }
+                        else if ($row['points'] <= 2399 && $row['points'] >=2300) {
+                          echo "#B660CD";
+                      }
+                      else if ($row['points'] <= 2299 && $row['points'] >=2100) {
+                        echo "#aaf";
+                    }
+                    ?> ">
+                    <font id="band" color=#000 size='4vw'><?php echo $row['points']; ?> </td>
                         <td><img src="<?php echo $row['profilepicture']; ?>" style="max-height:130px;width:130px; border-radius:50%">
                       
                         <?php   /*
