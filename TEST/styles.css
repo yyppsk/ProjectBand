@@ -18,8 +18,8 @@ body {
 }
 
 .lboard_section {
-  width: 500px;
-  height: 400px;
+  width: 740px;
+  height: 515px;
   margin: 100px auto 0;
   background: #f94f62;
   padding: 25px 40px;
@@ -75,7 +75,7 @@ body {
 }
 
 .lboard_wrap .lboard_mem .img {
-  width: 50px;
+  width: 100px;
 }
 
 .lboard_wrap .lboard_mem img {

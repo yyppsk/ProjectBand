@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>CodePen - stylish footer</title>
+    <title>Project Band Platform</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
@@ -29,203 +29,208 @@
         <div class="lboard_tabs">
           <div class="tabs">
             <ul>
-              <li data-li="today">Today</li>
-              <li class="active" data-li="month">Month</li>
-              <li data-li="year">Year</li>
+              <li data-li="today">TOP 5 CODERS</li>
             </ul>
           </div>
         </div>
-
         <div class="lboard_wrap">
-          <div class="lboard_item today" style="display: none">
-            <div class="lboard_mem">
-              <div class="img">
-                <img src="pic_1.png" alt="picture_1" />
-              </div>
-              <div class="name_bar">
-                <p><span>1.</span> Charles John</p>
-                <div class="bar_wrap">
-                  <div class="inner_bar" style="width: 95%"></div>
+        <div class="lboard_item today" style="display: none">
+          <?php
+            $server = "localhost";
+            $user = "rootuser";
+            $password = "123123test";
+            $db = "projectband_prod";
+            // Create connection
+            $conn = mysqli_connect($server,$user,$password,$db);
+            $sql = "SELECT * FROM students";
+            $result = mysqli_query($conn, $sql);
+                if (isset($_GET['pageno'])) {
+                    $pageno = $_GET['pageno'];
+                } else {
+                    $pageno = 1;
+                }
+                $no_of_records_per_page = 5;
+                $offset = ($pageno-1) * $no_of_records_per_page;
+                $total_pages_sql = "SELECT COUNT(*) FROM students";
+                $result = mysqli_query($conn,$total_pages_sql);
+                $total_rows = mysqli_fetch_array($result)[0];
+                $total_pages = ceil($total_rows / $no_of_records_per_page);
+
+                $sql = "SELECT * FROM students ORDER BY points DESC LIMIT $offset, $no_of_records_per_page";
+                $res_data = mysqli_query($conn,$sql);
+                while($row = mysqli_fetch_array($res_data)){
+                    //here goes the data
+                //mysqli_close($conn);
+              ?>
+                    <div class="lboard_mem">
+                      <div class="img">
+                      <img src="<?php echo $row['profilepicture']; ?>" style="max-height: 100px;width:100px; border-radius:50%" alt="user_image">
+                      </div>
+                      <div class="name_bar">
+                        <p><span>1.</span><?php echo $row['name']; ?></p>
+                        <div class="bar_wrap">
+                          <div class="inner_bar" style="width: 95%"></div>
+                        </div>
+                      </div>
+                      <div class="points"><?php echo $row['points']; ?></div>
                 </div>
-              </div>
-              <div class="points">195 points</div>
-            </div>
-            <div class="lboard_mem">
-              <div class="img">
-                <img src="pic_2.png" alt="picture_2" />
-              </div>
-              <div class="name_bar">
-                <p><span>2.</span>Alex Mike</p>
-                <div class="bar_wrap">
-                  <div class="inner_bar" style="width: 80%"></div>
-                </div>
-              </div>
-              <div class="points">185 points</div>
-            </div>
-            <div class="lboard_mem">
-              <div class="img">
-                <img src="pic_3.png" alt="picture_2" />
-              </div>
-              <div class="name_bar">
-                <p><span>3.</span>Johnson</p>
-                <div class="bar_wrap">
-                  <div class="inner_bar" style="width: 60%"></div>
-                </div>
-              </div>
-              <div class="points">160 points</div>
-            </div>
-            <div class="lboard_mem">
-              <div class="img">
-                <img src="pic_4.png" alt="picture_1" />
-              </div>
-              <div class="name_bar">
-                <p><span>4.</span>Rosey</p>
-                <div class="bar_wrap">
-                  <div class="inner_bar" style="width: 30%"></div>
-                </div>
-              </div>
-              <div class="points">130 points</div>
-            </div>
-            <div class="lboard_mem">
-              <div class="img">
-                <img src="pic_5.png" alt="picture_2" />
-              </div>
-              <div class="name_bar">
-                <p><span>5.</span>Scarlett Angela</p>
-                <div class="bar_wrap">
-                  <div class="inner_bar" style="width: 10%"></div>
-                </div>
-              </div>
-              <div class="points">110 points</div>
-            </div>
-          </div>
-          <div class="lboard_item month" style="display: block">
-            <div class="lboard_mem">
-              <div class="img">
-                <img src="pic_2.png" alt="picture_2" />
-              </div>
-              <div class="name_bar">
-                <p><span>1.</span> Alex Mike</p>
-                <div class="bar_wrap">
-                  <div class="inner_bar" style="width: 95%"></div>
-                </div>
-              </div>
-              <div class="points">1195 points</div>
-            </div>
-            <div class="lboard_mem">
-              <div class="img">
-                <img src="pic_3.png" alt="picture_3" />
-              </div>
-              <div class="name_bar">
-                <p><span>2.</span>Johnson</p>
-                <div class="bar_wrap">
-                  <div class="inner_bar" style="width: 80%"></div>
-                </div>
-              </div>
-              <div class="points">1185 points</div>
-            </div>
-            <div class="lboard_mem">
-              <div class="img">
-                <img src="pic_1.png" alt="picture_1" />
-              </div>
-              <div class="name_bar">
-                <p><span>3.</span>Charles John</p>
-                <div class="bar_wrap">
-                  <div class="inner_bar" style="width: 70%"></div>
-                </div>
-              </div>
-              <div class="points">1160 points</div>
-            </div>
-            <div class="lboard_mem">
-              <div class="img">
-                <img src="pic_5.png" alt="picture_5" />
-              </div>
-              <div class="name_bar">
-                <p><span>4.</span>Scarlett Angela</p>
-                <div class="bar_wrap">
-                  <div class="inner_bar" style="width: 50%"></div>
-                </div>
-              </div>
-              <div class="points">1130 points</div>
-            </div>
-            <div class="lboard_mem">
-              <div class="img">
-                <img src="pic_4.png" alt="picture_4" />
-              </div>
-              <div class="name_bar">
-                <p><span>5.</span>Rosey</p>
-                <div class="bar_wrap">
-                  <div class="inner_bar" style="width: 30%"></div>
-                </div>
-              </div>
-              <div class="points">1110 points</div>
-            </div>
-          </div>
-          <div class="lboard_item year" style="display: none">
-            <div class="lboard_mem">
-              <div class="img">
-                <img src="pic_5.png" alt="picture_5" />
-              </div>
-              <div class="name_bar">
-                <p><span>1.</span>Scarlett Angela</p>
-                <div class="bar_wrap">
-                  <div class="inner_bar" style="width: 90%"></div>
-                </div>
-              </div>
-              <div class="points">2195 points</div>
-            </div>
-            <div class="lboard_mem">
-              <div class="img">
-                <img src="pic_4.png" alt="picture_4" />
-              </div>
-              <div class="name_bar">
-                <p><span>2.</span>Rosey</p>
-                <div class="bar_wrap">
-                  <div class="inner_bar" style="width: 85%"></div>
-                </div>
-              </div>
-              <div class="points">2185 points</div>
-            </div>
-            <div class="lboard_mem">
-              <div class="img">
-                <img src="pic_3.png" alt="picture_3" />
-              </div>
-              <div class="name_bar">
-                <p><span>3.</span>Johnson</p>
-                <div class="bar_wrap">
-                  <div class="inner_bar" style="width: 65%"></div>
-                </div>
-              </div>
-              <div class="points">2160 points</div>
-            </div>
-            <div class="lboard_mem">
-              <div class="img">
-                <img src="pic_1.png" alt="picture_1" />
-              </div>
-              <div class="name_bar">
-                <p><span>4.</span>Charles John</p>
-                <div class="bar_wrap">
-                  <div class="inner_bar" style="width: 30%"></div>
-                </div>
-              </div>
-              <div class="points">2130 points</div>
-            </div>
-            <div class="lboard_mem">
-              <div class="img">
-                <img src="pic_2.png" alt="picture_2" />
-              </div>
-              <div class="name_bar">
-                <p><span>5.</span>Alex Mike</p>
-                <div class="bar_wrap">
-                  <div class="inner_bar" style="width: 10%"></div>
-                </div>
-              </div>
-              <div class="points">2110 points</div>
-            </div>
+                    <?php
+                }
+                ?>
           </div>
         </div>
       </div>
     </div>
+    <style>
+  th {
+    background-color: white;
+    color: #000;
+    text-align:center;
+    font-size : 18px;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.img {
+  margin: auto;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  background: #009aff;
+  border-radius: 50%;
+  animation: pulse 2s ease-out infinite;
+}
+
+span {
+  margin: auto;
+  color: transparent;
+  text-shadow: 0 0 0 white;
+}
+
+.img::after {
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  border-radius: 50%;
+  position: absolute;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0px rgba(128, 0, 32, 1),
+      0 0 0 0px rgba(124, 10, 2, 0.85);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    box-shadow: 0 0 0 15px rgba(118, 33, 26, 0), 0 0 0 30px rgba(0, 210, 255, 0);
+  }
+}
+
+  </style>
+<table class="table table-hover text-center table-bordered table border='1'";>
+                    <thead class="thead-light text-#000">
+                         <tr>
+                             <th class="" >Serial</th>
+                             <th class="py-3 text-#000 ">Name</th>
+                             <th id = "emid" class="py-3 text-#000 ">Email</th>
+                             <th id = "dtls" class="py-3 text-#000">Band</th> 
+                             <th class="py-3 text-#000" >Picture</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+    <?php
+    $server = "localhost";
+    $user = "rootuser";
+    $password = "123123test";
+    $db = "projectband_prod";
+    // Create connection
+    $conn = mysqli_connect($server,$user,$password,$db);
+    $sql = "SELECT * FROM students";
+    $result = mysqli_query($conn, $sql);
+        if (isset($_GET['pageno'])) {
+            $pageno = $_GET['pageno'];
+        } else {
+            $pageno = 1;
+        }
+        $no_of_records_per_page = 10;
+        $offset = ($pageno-1) * $no_of_records_per_page;
+        $total_pages_sql = "SELECT COUNT(*) FROM students";
+        $result = mysqli_query($conn,$total_pages_sql);
+        $total_rows = mysqli_fetch_array($result)[0];
+        $total_pages = ceil($total_rows / $no_of_records_per_page);
+
+        $sql = "SELECT id, email, name, points, profilepicture FROM students ORDER BY points DESC LIMIT $offset, $no_of_records_per_page";
+        $res_data = mysqli_query($conn,$sql);
+        while($row = mysqli_fetch_array($res_data)){
+            //here goes the data
+        //mysqli_close($conn);
+    ?>
+    <tr>
+                        <td> <font color=#000 size='4vw'> <?php echo $row['id']; ?> </td>
+                        <td> <font color=#000 size='4vw'><?php echo $row['name']; ?> </td>
+                        <td> <font color=#000 size='4vw'><?php echo $row['email']; ?> </td>
+                        <td> <font color=#000 size='4vw'><?php echo $row['points']; ?> </td>
+                        <td><img src="<?php echo $row['profilepicture']; ?>" style="max-height:130px;width:130px; border-radius:50%">
+                      
+                        <?php   /*
+                        if($row['status']==0){  
+                        echo "
+                        <span style='font-size: 3rem;'>
+                        <span style='color: #4BB543; align-items:center;'>
+                        <i class='fas fa-user-check fa-sm' title='Person is found!'></i>
+                      </span>
+                      ";  
+                        }else{  
+                        echo "
+                        <span style='font-size: 3rem;'>
+                        <span style='color: #FA113D; align-items:center;'>
+                        <a href='https://lostandfoundsys.tawk.help/' style='color: #FA113D;'><i class='fas fa-user-check fa-sm' title='Person is Not found! Report them here.'></i></a>
+                      </span>
+                        ";
+                        }  
+                        ?>   
+                      </td>
+                    </tr>
+                    */
+                    }
+
+                    ?>
+                   </tbody>
+                </table>
+    
+    <ul class="pagination pagination-lg">
+      <li><a href="?pageno=1">First</a></li>
+      <li class="<?php if($pageno <= 1){ echo 'disabled'; } ?>">
+        <a
+          href="<?php if($pageno <= 1){ echo '#'; } else { echo "
+          ?pageno=".($pageno - 1); } ?>"
+          >Previous</a
+        >
+      </li>
+      <li class="<?php if($pageno >= $total_pages){ echo 'disabled'; } ?>">
+        <a
+          href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "
+          ?pageno=".($pageno + 1); } ?>"
+          >Next</a
+        >
+      </li>
+      <li><a href="?pageno=<?php echo $total_pages; ?>">Last</a></li>
+    </ul>
 
     <script src="scripts.js"></script>
     <!-- partial:index.partial.html -->
