@@ -1,3 +1,4 @@
+<php ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -244,7 +245,7 @@
               >
                 <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
                 <p>
-                  Don’t miss any updates of our new templates and extensions.!
+                  Don't miss any updates of our new templates and extensions.!
                 </p>
                 <form
                   action="#"
@@ -361,3 +362,4 @@
     <!-- partial -->
   </body>
 </html>
+</php>
