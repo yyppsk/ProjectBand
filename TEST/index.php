@@ -70,7 +70,23 @@
                       <div class="name_bar">
                         <p><span><?php echo $var++?></span><?php echo $row['name']; ?></p>
                         <div class="bar_wrap">
-                          <div class="inner_bar" style="width: 95%"></div>
+                        <div class="inner_bar" style="width: 100%; background-color:
+                          <?php if ($row['points'] >=3000) {
+                            echo "#a00";
+                          }
+                            else if ($row['points'] <= 2999 && $row['points'] >=2600) {
+                              echo "#FF2400";
+                          }
+                          else if ($row['points'] <= 2599 && $row['points'] >=2400) {
+                            echo "#f77";
+                        }
+                        else if ($row['points'] <= 2399 && $row['points'] >=2300) {
+                          echo "#B660CD";
+                      }
+                      else if ($row['points'] <= 2299 && $row['points'] >=2100) {
+                        echo "#aaf";
+                    }?>
+                          "></div>
                         </div>
                       </div>
                       <div class="points"><?php echo $row['points']; ?></div>
