@@ -267,46 +267,6 @@ textarea {
 
 
   </style>
-  <script>
-    // Hide Navbar on scroll down
-var didScroll;
-var lastScrollTop = 0;
-var delta = 5;
-var navbarHeight = $('nav').outerHeight();
-
-$(window).scroll(function(event){
-    didScroll = true;
-});
-
-setInterval(function() {
-    if (didScroll) {
-        hasScrolled();
-        didScroll = false;
-    }
-}, 250);
-
-function hasScrolled() {
-    var st = $(this).scrollTop();
-    
-    // Make sure they scroll more than delta
-    if(Math.abs(lastScrollTop - st) <= delta)
-        return;
-    
-    // If they scrolled down and are past the navbar, add class .nav-up.
-    // This is necessary so you never see what is "behind" the navbar.
-    if (st > lastScrollTop && st > navbarHeight){
-        // Scroll Down
-        $('nav').removeClass('nav-down').addClass('nav-up');
-    } else {
-        // Scroll Up
-        if(st + $(window).height() < $(document).height()) {
-            $('nav').removeClass('nav-up').addClass('nav-down');
-        }
-    }
-    
-    lastScrollTop = st;
-}
-    </script>
     <div class="wrapper">
       <div class="lboard_section">
         <div class="lboard_tabs">
@@ -520,7 +480,30 @@ span {
     ?>
     <tr>
                         <td style="vertical-align: middle;"> <font color=#000 size='4vw'> <?php echo $var2++?> </td>
-                        <td style="vertical-align: middle;"> <font color=#000 size='4vw'><b><?php echo $row['name']; ?> </b></td>
+                        <td style="vertical-align: middle;"> <font color=#000 size='4vw'><b><?php echo $row['name']; ?> </b><br><form action="./persondetails.php" method="post" enctype="multipart/form-data">
+                    <div class="action-buttons">
+                      <?php
+                      if($row['newbie']){  
+                            echo "<style>
+                            .card .content .details .action-buttons button {
+                              background : Green;
+                            }
+                          </style>";
+                         
+                        } ?>
+                        <button id="details" style="padding: 10px 30px;
+                      border: none;
+                      outline: none;
+                      border-radius: 5px;
+                      font-size: 2vh;
+                      width:16vw;
+                      height:5vh;
+                      font-weight: 500;
+                      border: 1px solid #999;
+                      color: #999;
+                      background : white;
+                      cursor: pointer; " id="submit" type = "submit" name = "submit" value="<?php echo $row['email'];?>">Details</button>
+                    </div></td>
                         <td style="vertical-align: middle;"> <font color=#000 size='4vw'><img src="<?php if($row['newbie']){
                             echo "http://localhost/ProjectBand/TEST/Achievements/Welcome-Egg.png";
                             echo '"style=max-height:85px;width:85px;opacity:100%;"';
@@ -563,7 +546,7 @@ span {
               echo "#808080";
           }
                     ?> ">
-                    <font id="band" color=#000 size='4vw'><?php echo $row['points']; ?> </td>
+                    <font id="band" color=#000 size='6vw'><b><?php echo $row['points']; ?></b> </td>
                     <td style="
                         <?php if ($row['points'] >=3000) {
                             echo "
@@ -698,7 +681,6 @@ span {
     outline: none;
     text-decoration: none;
     border-radius: 50px;
-    display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
