@@ -108,13 +108,35 @@
 * {
   box-sizing: border-box;
 }
-
+.animated-gradient {
+  animation: animateBg 20s linear infinite;
+  background-image: linear-gradient(0deg,#d3ffd1,#ffccd1,#f6c7ff,#f4ff9e,#d3ffd1,#ffccd1);
+  background-size: 100% 500%;
+}
+@keyframes animateBg {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 0% 100%; }
+}
 body {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
+  background-image: linear-gradient(
+  5deg,
+  hsl(314deg 73% 85%) 0%,
+  hsl(343deg 100% 85%) 2%,
+  hsl(26deg 100% 76%) 4%,
+  hsl(50deg 100% 59%) 8%,
+  hsl(78deg 93% 67%) 13%,
+  hsl(138deg 100% 79%) 47%,
+  hsl(170deg 97% 81%) 83%,
+  hsl(186deg 78% 85%) 90%,
+  hsl(194deg 65% 79%) 94%,
+  hsl(201deg 55% 74%) 98%,
+  hsl(208deg 46% 69%) 100%
+);
 }
 
 .img {
@@ -159,7 +181,7 @@ span {
 }
 
   </style>
-<table class="table table-hover text-center table-bordered table border='1'";>
+<table class="table table-hover text-center table-bordered table border='1'" style="">
                     <thead class="thead-light text-#000">
                          <tr>
                              <th class="" >Serial</th>
@@ -220,7 +242,23 @@ span {
                     }
                     ?> ">
                     <font id="band" color=#000 size='4vw'><?php echo $row['points']; ?> </td>
-                        <td><img src="<?php echo $row['profilepicture']; ?>" style="max-height:130px;width:130px; border-radius:50%">
+                    <td style="background-color:
+                        <?php if ($row['points'] >=3000) {
+                            echo "#a00";
+                          }
+                            else if ($row['points'] <= 2999 && $row['points'] >=2600) {
+                              echo "#FF2400";
+                          }
+                          else if ($row['points'] <= 2599 && $row['points'] >=2400) {
+                            echo "#f77";
+                        }
+                        else if ($row['points'] <= 2399 && $row['points'] >=2300) {
+                          echo "#B660CD";
+                      }
+                      else if ($row['points'] <= 2299 && $row['points'] >=2100) {
+                        echo "#aaf";
+                    }
+                    ?> "><img src="<?php echo $row['profilepicture']; ?>" style="max-height:130px;width:130px; border-radius:50%">
                       
                         <?php   /*
                         if($row['status']==0){  
@@ -248,25 +286,91 @@ span {
                    </tbody>
                 </table>
     
-    <ul class="pagination pagination-lg">
-      <li><a href="?pageno=1">First</a></li>
-      <li class="<?php if($pageno <= 1){ echo 'disabled'; } ?>">
+    <ul class="pagination pagination-lg" style="justify-content: space-evenly;">
+      <button><li><a href="?pageno=1">First</a></li></button>
+      <button><li class="<?php if($pageno <= 1){ echo 'disabled'; } ?>">
         <a
           href="<?php if($pageno <= 1){ echo '#'; } else { echo "
           ?pageno=".($pageno - 1); } ?>"
           >Previous</a
         >
-      </li>
-      <li class="<?php if($pageno >= $total_pages){ echo 'disabled'; } ?>">
+      </li></button>
+      <button><li class="<?php if($pageno >= $total_pages){ echo 'disabled'; } ?>">
         <a
           href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "
           ?pageno=".($pageno + 1); } ?>"
           >Next</a
         >
-      </li>
-      <li><a href="?pageno=<?php echo $total_pages; ?>">Last</a></li>
+      </li></button>
+      <button><li><a href="?pageno=<?php echo $total_pages; ?>">Last</a></li></button>
     </ul>
+<!-- Pagination Button Css -->
+<style>
+  button {
+    position: relative;
+    outline: none;
+    text-decoration: none;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    height: 45px;
+    width: 180px;
+    opacity: 1;
+    background-color: #ffffff;
+    border: 1px solid rgba(22, 76, 167, 0.6);
+  }
+  button span {
+    color: #164ca7;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.7px;
+  }
+  button:hover {
+    animation: rotate 0.7s ease-in-out both;
+  }
+  button:hover span {
+    animation: storm 0.7s ease-in-out both;
+    animation-delay: 0.06s;
+  }
 
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+    25% {
+      transform: rotate(3deg) translate3d(0, 0, 0);
+    }
+    50% {
+      transform: rotate(-3deg) translate3d(0, 0, 0);
+    }
+    75% {
+      transform: rotate(1deg) translate3d(0, 0, 0);
+    }
+    100% {
+      transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+  }
+  @keyframes storm {
+    0% {
+      transform: translate3d(0, 0, 0) translateZ(0);
+    }
+    25% {
+      transform: translate3d(4px, 0, 0) translateZ(0);
+    }
+    50% {
+      transform: translate3d(-3px, 0, 0) translateZ(0);
+    }
+    75% {
+      transform: translate3d(2px, 0, 0) translateZ(0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) translateZ(0);
+    }
+  }
+</style>
     <script src="scripts.js"></script>
     <!-- partial:index.partial.html -->
     <footer class="new_footer_area bg_color">
