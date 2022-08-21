@@ -24,6 +24,289 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    
+<header>
+    <div class="nav-bar">
+            <div class="logo">
+                <a href="/"><img class="logo" src="http://localhost/ProjectBand/TEST/PROJECT%20BAND.png" ight="50%" alt="logo"></a>
+            </div>
+    </div>
+        <div class="menu">
+            <ul class="nav">
+            
+              <li id="home"><a href="/" id="a-home">Home</a></li>
+              <li><a href="/profile">Profile</a></li>
+              <li><a href="/contact">Contact</a></li>
+              
+            </ul>
+        </div>
+        <div class="bottom">
+        </div>
+    </div>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+</header>
+<style>
+  
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    flex: auto;
+}
+
+header {
+    font-size: 12px;
+    background: #1A2434;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.logo-socials{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.logo:hover {
+    filter: opacity(1.2);
+    -webkit-filter: opacity(1.2);
+    cursor: pointer;
+}
+
+.nav-bar {
+    position: fixed;
+    width: 100vw;
+    background-color: #101620;
+    height: 7vh;
+    transition: top 0.2s ease-in-out;
+    position: sticky;
+}
+
+
+.menu {
+    width: 80vw;
+    height: 60px;
+    background-color: #1A2434;
+    margin-left: 22vw;
+    margin-top: 8px;
+    clip-path: polygon(3% 0, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.bottom {
+    width: 100vw;
+    height: 20px;
+    background-color: #1A2434;
+}
+
+
+.logo img {
+    width: 242px;
+    z-index: 2;
+    margin-top: 1px;
+    filter: opacity(0.9);
+    -webkit-filter: opacity(0.9);
+}
+
+
+.nav {
+    position: relative;
+    width: 80vw;
+    margin-right: 5vw;
+    display: flex;
+    justify-content: space-around;
+    line-height: 5vh;
+    margin: -45px;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    
+}
+
+#home{
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+    margin-left: -2vw;
+}
+.nav li{
+  position:relative;
+  height: 60px;
+  width: 400px;
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+}
+
+.nav li::before {
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  width:100%;
+  background-color:rgb(140, 30, 30);
+  transform: scaleX(0);
+    transition: transform 200ms ease-in-out;
+}
+
+.nav li a{
+  color: white;
+  text-decoration: none; /*removes underline*/
+  display: block; /*links clickable everywhere*/
+  height:97%;
+  width: 100%;
+  text-align:center;
+  padding-top: 8px;
+  background-color: #1A2434;
+  clip-path: polygon(0 0, 100% 0, 89% 100%, 11% 100%);
+}
+
+#a-home{
+    height: 100%;
+    clip-path: polygon(10% 0, 100% 0%, 89% 96%, 0 100%);
+  padding-left: 2vw;
+}
+
+#news{
+    height: 100%;
+    clip-path: polygon(0 0, 100% 0, 89% 100%, 11% 96%);
+}
+
+.nav li:hover::before,
+.nav li:focus::before{
+  transform: scaleX(1);
+}
+
+.nav li a:hover{
+  background-color: #101620;
+  transition: 0.3s ease;
+}
+
+/* Socials */
+
+.social {
+    display: flex;
+    transition: 0.4s;
+}
+
+.social span {
+    width: 250px;
+    text-align: center;
+    color: white;
+    margin-top: 22px;
+    font-size: 11px;
+    letter-spacing: 0.2px;
+}
+
+.social ul {
+    margin-top: 16px;
+    width: 150px;
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+}
+
+.social ul li a {
+    font-size: 22px;
+    color: rgb(255, 255, 255);
+}
+
+.social ul a:hover,
+.social ul a:focus {
+    color: #931d37;
+    transform: scale(1.2);
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+/* Search */
+
+.search {
+    margin-left: 12vw;
+    margin-top: 18px;
+    width: 175px;
+}
+
+input {
+    background-color: transparent;
+    border: none;
+    height: 25px;
+    width: 150px;
+    padding-left: 5px;
+}
+
+::placeholder {
+    opacity: 0.7;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+}
+
+input,
+select,
+textarea {
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.logo-socials {
+    position: fixed;
+    display: flex;
+}
+
+
+  </style>
+  <script>
+    // Hide Navbar on scroll down
+var didScroll;
+var lastScrollTop = 0;
+var delta = 5;
+var navbarHeight = $('nav').outerHeight();
+
+$(window).scroll(function(event){
+    didScroll = true;
+});
+
+setInterval(function() {
+    if (didScroll) {
+        hasScrolled();
+        didScroll = false;
+    }
+}, 250);
+
+function hasScrolled() {
+    var st = $(this).scrollTop();
+    
+    // Make sure they scroll more than delta
+    if(Math.abs(lastScrollTop - st) <= delta)
+        return;
+    
+    // If they scrolled down and are past the navbar, add class .nav-up.
+    // This is necessary so you never see what is "behind" the navbar.
+    if (st > lastScrollTop && st > navbarHeight){
+        // Scroll Down
+        $('nav').removeClass('nav-down').addClass('nav-up');
+    } else {
+        // Scroll Up
+        if(st + $(window).height() < $(document).height()) {
+            $('nav').removeClass('nav-up').addClass('nav-down');
+        }
+    }
+    
+    lastScrollTop = st;
+}
+    </script>
     <div class="wrapper">
       <div class="lboard_section">
         <div class="lboard_tabs">
@@ -65,7 +348,7 @@
               ?>
                     <div class="lboard_mem">
                       <div class="img">
-                      <img src="<?php echo $row['profilepicture']; ?>" style="max-height: 100px;width:100px; border-radius:50%;" alt="user_image">
+                      <img src="<?php echo $row['profilepicture']; ?>" style="filter: drop-shadow(0px 0px 12px cyan);max-height: 100px;width:100px; border-radius:50%;" alt="user_image">
                       </div>
                       <div class="name_bar">
                         <p><span><?php echo $var++?></span><?php echo $row['name']; ?></p>
@@ -85,7 +368,22 @@
                       }
                       else if ($row['points'] <= 2299 && $row['points'] >=2100) {
                         echo "#aaf";
-                    }?>
+                    }
+                    else if ($row['points'] <= 2099 && $row['points'] >=1900) {
+                      echo "#800080";
+                  }
+                  else if ($row['points'] <= 1899 && $row['points'] >=1600) {
+                    echo "rgb(1,1,162)";
+                }
+                else if ($row['points'] <= 1599 && $row['points'] >=1400) {
+                  echo "#03a89e";
+              }
+              else if ($row['points'] <= 1399 && $row['points'] >=1200) {
+                echo "#008000";
+            }
+            else if ($row['points'] <= 1199) {
+              echo "#808080";
+          }?>
                           "></div>
                         </div>
                       </div>
@@ -233,7 +531,7 @@ span {
                             echo '"style=max-height:85px;width:85px;opacity:100%;"';
                             echo " title='Ten Contests Participation!'";
                           } ?>"</td>
-                        <td style="vertical-align: middle; background-color:
+                        <td style="filter: drop-shadow(8px 5px 13px black);vertical-align: middle; background-color:
                         <?php if ($row['points'] >=3000) {
                             echo "#a00";
                           }
@@ -249,6 +547,21 @@ span {
                       else if ($row['points'] <= 2299 && $row['points'] >=2100) {
                         echo "#aaf";
                     }
+                    else if ($row['points'] <= 2099 && $row['points'] >=1900) {
+                      echo "#800080";
+                  }
+                  else if ($row['points'] <= 1899 && $row['points'] >=1600) {
+                    echo "rgb(1,1,162,0.80);";
+                }
+                else if ($row['points'] <= 1599 && $row['points'] >=1400) {
+                  echo "#03a8a8";
+              }
+              else if ($row['points'] <= 1399 && $row['points'] >=1200) {
+                echo "#008000";
+            }
+            else if ($row['points'] <= 1199) {
+              echo "#808080";
+          }
                     ?> ">
                     <font id="band" color=#000 size='4vw'><?php echo $row['points']; ?> </td>
                     <td style="
@@ -292,7 +605,47 @@ span {
                             }
                             ";
                     }
-                    ?> "><img src="<?php echo $row['profilepicture']; ?>" style="max-height:130px;width:130px;border: 2px solid #fff; border-radius:50%; opacity:85%">
+                    else if ($row['points'] <= 2099 && $row['points'] >=1900) {
+                      echo "
+                            
+                            background-image: linear-gradient(90deg,#800080,#b15da2,#800080,#b15da2);
+                            background-size: 300% 100%;
+                          }
+                          ";
+                  }
+                  else if ($row['points'] <= 1899 && $row['points'] >=1600) {
+                    echo "
+                          
+                          background-image: linear-gradient(90deg,#0101a2,#b15da2,#0101a2,#b15da2);
+                          background-size: 300% 100%;
+                        }
+                        ";
+                }
+                else if ($row['points'] <= 1199) {
+                  echo "
+                        
+                        background-image: linear-gradient(90deg,#808080,#b15da2,#808080,#b15da2);
+                        background-size: 300% 100%;
+                      }
+                      ";
+              }
+              else if ($row['points'] <= 1599 && $row['points'] >=1400) {
+                echo "
+                      
+                      background-image: linear-gradient(90deg,#03a8a8,#b15da2,#03a8a8,#b15da2);
+                      background-size: 300% 100%;
+                    }
+                    ";
+            }
+            else if ($row['points'] <= 1399 && $row['points'] >=1200) {
+              echo "
+                    
+                    background-image: linear-gradient(90deg,#008000,#b15da2,#008000,#b15da2);
+                    background-size: 300% 100%;
+                  }
+                  ";
+          }
+                    ?> "><img src="<?php echo $row['profilepicture']; ?>" style="filter: drop-shadow(10px 9px 16px black);max-height:130px;width:130px;border: 2px solid #fff; border-radius:50%; opacity:85%">
                       
                         <?php   /*
                         if($row['status']==0){  
