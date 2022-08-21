@@ -20,7 +20,7 @@ body {
   width: 740px;
   height: 680px;
   margin: 100px auto 0;
-  background: #f94f62;
+  background: #000000d9;
   padding: 25px 40px;
   position: relative;
   border-radius: 5px;
@@ -34,7 +34,7 @@ body {
   margin-right: 50px;
   font-size: 18px;
   font-weight: 600;
-  color: #3a3d51;
+  color: #8c93bf;
   cursor: pointer;
 }
 
@@ -47,7 +47,7 @@ body {
   position: absolute;
   top: 70px;
   left: 40px;
-  background: #ffd300;
+  background: #0e0e0c;
   width: 100%;
   height: 100%;
   border-radius: 5px;
@@ -88,7 +88,7 @@ body {
 }
 
 .lboard_wrap .lboard_mem .name_bar p {
-  color: #3a3d51;
+  color: #8c93bf;
 }
 
 .lboard_wrap .lboard_mem .name_bar p span {
@@ -97,7 +97,7 @@ body {
 
 .lboard_wrap .lboard_mem .points {
   width: 100px;
-  color: #3a3d51;
+  color: #8c93bf;
 }
 
 .lboard_wrap .lboard_mem .name_bar .bar_wrap {

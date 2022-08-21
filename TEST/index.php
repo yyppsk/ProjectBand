@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="lboard_wrap">
-        <div class="lboard_item today" style="display: none">
+        <div class="lboard_item today" style="">
           <?php
             $server = "localhost";
             $user = "rootuser";
@@ -65,7 +65,7 @@
               ?>
                     <div class="lboard_mem">
                       <div class="img">
-                      <img src="<?php echo $row['profilepicture']; ?>" style="max-height: 100px;width:100px; border-radius:50%" alt="user_image">
+                      <img src="<?php echo $row['profilepicture']; ?>" style="max-height: 100px;width:100px; border-radius:50%;" alt="user_image">
                       </div>
                       <div class="name_bar">
                         <p><span><?php echo $var++?></span><?php echo $row['name']; ?></p>
@@ -169,8 +169,8 @@ span {
 
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0px rgba(128, 0, 32, 1),
-      0 0 0 0px rgba(124, 10, 2, 0.85);
+    box-shadow: 0 0 0 0px #bd219194,
+      0 0 0 0px #ff077c;
   }
   50% {
     transform: scale(0.95);
@@ -184,9 +184,9 @@ span {
 <table class="table table-hover text-center table-bordered table border='1'" style="">
                     <thead class="thead-light text-#000">
                          <tr>
-                             <th class="" >Serial</th>
-                             <th class="py-3 text-#000 ">Name</th>
-                             <th id = "emid" class="py-3 text-#000 ">Email</th>
+                             <th class="" style="width: 7vw ;" >Serial</th>
+                             <th class="py-3 text-#000 "style="width: 20% ;">Name</th>
+                             <th id = "emid" class="py-3 text-#000 "style="width: 30% ;">Achievements</th>
                              <th id = "dtls" class="py-3 text-#000">Band</th> 
                              <th class="py-3 text-#000" >Picture</th>
                          </tr>
@@ -214,17 +214,26 @@ span {
         $total_rows = mysqli_fetch_array($result)[0];
         $total_pages = ceil($total_rows / $no_of_records_per_page);
 
-        $sql = "SELECT id, email, name, points, profilepicture FROM students ORDER BY points DESC LIMIT $offset, $no_of_records_per_page";
+        $sql = "SELECT * FROM students ORDER BY points DESC LIMIT $offset, $no_of_records_per_page";
         $res_data = mysqli_query($conn,$sql);
         while($row = mysqli_fetch_array($res_data)){
             //here goes the data
         //mysqli_close($conn);
     ?>
     <tr>
-                        <td> <font color=#000 size='4vw'> <?php echo $var2++?> </td>
-                        <td> <font color=#000 size='4vw'><?php echo $row['name']; ?> </td>
-                        <td> <font color=#000 size='4vw'><?php echo $row['email']; ?> </td>
-                        <td style="background-color:
+                        <td style="vertical-align: middle;"> <font color=#000 size='4vw'> <?php echo $var2++?> </td>
+                        <td style="vertical-align: middle;"> <font color=#000 size='4vw'><b><?php echo $row['name']; ?> </b></td>
+                        <td style="vertical-align: middle;"> <font color=#000 size='4vw'><img src="<?php if($row['newbie']){
+                            echo "http://localhost/ProjectBand/TEST/Achievements/Welcome-Egg.png";
+                            echo '"style=max-height:85px;width:85px;opacity:100%;"';
+                            echo " title='New egg in the House!'";
+                          } ?>
+                          <br><img src="<?php if($row['tencontest']){
+                            echo "http://localhost/ProjectBand/TEST/Achievements/TEN CONTEST.png";
+                            echo '"style=max-height:85px;width:85px;opacity:100%;"';
+                            echo " title='Ten Contests Participation!'";
+                          } ?>"</td>
+                        <td style="vertical-align: middle; background-color:
                         <?php if ($row['points'] >=3000) {
                             echo "#a00";
                           }
@@ -242,23 +251,48 @@ span {
                     }
                     ?> ">
                     <font id="band" color=#000 size='4vw'><?php echo $row['points']; ?> </td>
-                    <td style="background-color:
+                    <td style="
                         <?php if ($row['points'] >=3000) {
-                            echo "#a00";
+                            echo "
+                              
+                              background-image: linear-gradient(90deg,#aa0000,#b15da2,#aa0000,#b15da2);
+                              background-size: 300% 100%;
+                            }
+                            ";
                           }
                             else if ($row['points'] <= 2999 && $row['points'] >=2600) {
-                              echo "#FF2400";
+                              echo "
+                              
+                              background-image: linear-gradient(90deg,#ff2400,#b15da2,#ff2400,#b15da2);
+                              background-size: 300% 100%;
+                            }
+                            ";
                           }
                           else if ($row['points'] <= 2599 && $row['points'] >=2400) {
-                            echo "#f77";
+                            echo "
+                              
+                              background-image: linear-gradient(90deg,#ff7777,#b15da2,#ff7777,#b15da2);
+                              background-size: 300% 100%;
+                            }
+                            ";
                         }
                         else if ($row['points'] <= 2399 && $row['points'] >=2300) {
-                          echo "#B660CD";
+                          echo "
+                              
+                              background-image: linear-gradient(90deg,#b660cd,#b15da2,#b660cd,#b15da2);
+                              background-size: 300% 100%;
+                            }
+                            ";
                       }
                       else if ($row['points'] <= 2299 && $row['points'] >=2100) {
-                        echo "#aaf";
+                        echo "
+                              
+                              background-image: linear-gradient(90deg,#aaaaff,#b15da2,#aaaaff,#b15da2);
+                              background-size: 300% 100%;
+                            }
+                            ";
                     }
-                    ?> "><img src="<?php echo $row['profilepicture']; ?>" style="max-height:130px;width:130px; border-radius:50%">
+                    ?> "><img src="<?php echo $row['profilepicture']; ?>" style="max-height:130px;width:130px;border: 2px solid #fff; border-radius:50%; opacity:85%">
                       
                         <?php   /*
                         if($row['status']==0){  
