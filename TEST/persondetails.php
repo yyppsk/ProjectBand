@@ -117,6 +117,12 @@ if(isset($_POST['submit'])){
           $_SESSION['javascript'] = $row['javascript'];
           $_SESSION['php'] = $row['php'];
           $_SESSION['python'] = $row['python'];
+          $_SESSION['onecontest'] = $row['OneContest'];
+          $_SESSION['fivecontest'] = $row['fivecontest'];
+          $_SESSION['tencontest'] = $row['tencontest'];
+          $_SESSION['twentycontest'] = $row['twentycontest'];
+          $_SESSION['triviaexpert'] = $row['triviaexpert'];
+
       }
       echo "<title>",$_SESSION['name'];}?>'s Details</title>
 <div class="container" style="<?php if($_SESSION["desc"] >=3000) {
@@ -270,9 +276,9 @@ else if ($_SESSION['desc'] <= 1199) {
           <div id="about" role="tabpanel" class="tab-pane fade">
             <h2>Details of <?php echo $_SESSION['name']; ?>:</h2>
             <h3>Band Score : <?php echo $_SESSION['desc'];?></p></h2>
-            <h3>My favorite languages :</h3>
+            <h3 style="margin-bottom: 15px;">My favorite languages :</h3>
             <p style="font-size: 22px;
-    color: #fffffff5;"><?php echo $_SESSION['favlang'];?></p>
+    color: #fffffff5;margin-bottom: 100px;"><?php echo $_SESSION['favlang'];?></p>
             <style>
               .grid-container {
                 display: grid;
@@ -287,10 +293,36 @@ else if ($_SESSION['desc'] <= 1199) {
                 padding: 20px;
                 font-size: 30px;
                 text-align: center;
+                opacity: 0.8;
+                box-shadow: inset 0px 0px 0px 1px #edeef4;
+                transform: translate(0, 0);
+                transform: translate3d(0, 0, 0);
+                transition: transform 0.14s ease-in, text-shadow 0.1s ease-in;
+                will-change: transform;
+                cursor: pointer;
+              }
+              .grid-item:before {
+                background-color: rgb(255 255 255 / 98%);
+                border: 1px solid rgba(0, 0, 0, 0.8);
+                padding: 20px;
+                font-size: 30px;
+                text-align: center;
+                box-shadow: 0 10px 24px 0px rgba(0, 0, 0, 0.02), 0 8px 20px -2px rgba(0, 0, 0, 0.06), 0 6px 10px -6px rgba(0, 0, 0, 0.1);
+                transition: opacity 0.1s ease-in;
+                will-change: opacity;
+                opacity: 0;
+              }
+              .grid-item:hover {
+                transform: translate(0, -20px);
+                transform: translate3d(0, -20px, 0);
+                opacity: 1;
+              }
+              .grid-item:hover:before {
+                opacity: 0.8;
               }
               </style>
             <div class="grid-container">
-              <div class="grid-item"><?php if($_SESSION['clang']){ echo '<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" style="max-height: 133px;min-height: 133px;"/>';} else { echo '
+              <div class="grid-item"><?php if($_SESSION['clang']){ echo '<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" id="language" style="max-height: 133px;min-height: 133px;}"/>';} else { echo '
             <i class="devicon-c-plain" style="font-size : 70px;"></i>
           ','Inactive';}?></div>
               <div class="grid-item"><?php if($_SESSION['cpp']){ echo '<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" style="max-height: 133px;min-height: 133px;"/>';} else { echo '
@@ -311,7 +343,43 @@ else if ($_SESSION['desc'] <= 1199) {
             </div>
             <p style="font-size: 22px;
     color: #fffffff5; margin-top: 70px;"><strong>Achievements Unlocked</strong></p>
-            <h3>My favorite technologies :</h3>
+            <style>
+              .grid-container {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                background-color: #ead3d3;
+                padding: 10px;
+                margin: -50px;
+              }
+              .grid-item {
+                background-color: rgb(255 255 255 / 98%);
+                border: 1px solid rgba(0, 0, 0, 0.8);
+                padding: 20px;
+                font-size: 30px;
+                text-align: center;
+              }
+              </style>
+            <div class="grid-container">
+              <div class="grid-item"><?php if($_SESSION['newbie']){ echo '<img src="http://localhost/ProjectBand/TEST/Achievements/Welcome-Egg.gif" style="max-height: 133px;min-height: 133px;"/>';} else { echo '
+            <img src="http://localhost/ProjectBand/TEST/Achievements/Welcome-Egg.gif" style="max-height: 133px;min-height: 133px;filter: grayscale(100%) blur(4px);"/>
+          ','Inactive';}?></div>
+              <div class="grid-item"><?php if($_SESSION['onecontest']){ echo '<img src="http://localhost/ProjectBand/TEST/Achievements/onecontest.png" style="max-height: 133px;min-height: 133px;"/>';} else { echo '
+            <img src="http://localhost/ProjectBand/TEST/Achievements/onecontest.png" style="max-height: 133px;min-height: 133px;filter: grayscale(100%) blur(4px);"/>
+            ','Inactive';}?></div>
+            <div class="grid-item"><?php if($_SESSION['fivecontest']){ echo '<img src="http://localhost/ProjectBand/TEST/Achievements/fivecontest.gif" style="max-height: 133px;min-height: 133px;"/>';} else { echo '
+            <img src="http://localhost/ProjectBand/TEST/Achievements/fivecontest.gif" style="max-height: 133px;min-height: 133px;filter: grayscale(100%) blur(4px);"/>
+          ','Inactive';}?></div>
+            <div class="grid-item"><?php if($_SESSION['tencontest']){ echo '<img src="http://localhost/ProjectBand/TEST/Achievements/tencontest.gif" style="max-height: 133px;min-height: 133px;"/>';} else { echo '
+            <img src="http://localhost/ProjectBand/TEST/Achievements/tencontest.gif" style="max-height: 133px;min-height: 133px;filter: grayscale(100%) blur(4px);"/>
+          ','Inactive';}?></div>
+            <div class="grid-item"><?php if($_SESSION['twentycontest']){ echo '<img src="http://localhost/ProjectBand/TEST/Achievements/twentycontest.gif" style="max-height: 133px;min-height: 133px;"/>';} else { echo '
+            <img src="http://localhost/ProjectBand/TEST/Achievements/twentycontest.gif" style="max-height: 133px;min-height: 133px;filter: grayscale(100%) blur(4px);"/>
+          ','Inactive';}?></div>
+            <div class="grid-item"><?php if($_SESSION['triviaexpert']){ echo '<img src="http://localhost/ProjectBand/TEST/Achievements/triviaexpert.gif" style="max-height: 133px;min-height: 133px;"/>';} else { echo '
+            <img src="http://localhost/ProjectBand/TEST/Achievements/triviaexpert.gif" style="max-height: 133px;min-height: 133px;filter: grayscale(100%) blur(4px);"/>
+          ','Inactive';}?></div>
+            </div>
+            <h3 style="margin-top: 60px;">My favorite technologies :</h3>
             <p style="font-size: 22px;
     color: #fffffff5;"><?php echo $_SESSION['favtech'];?></p>
           <div>
