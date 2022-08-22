@@ -465,7 +465,7 @@ span {
         } else {
             $pageno = 1;
         }
-        $no_of_records_per_page = 10;
+        $no_of_records_per_page = 8;
         $offset = ($pageno-1) * $no_of_records_per_page;
         $total_pages_sql = "SELECT COUNT(*) FROM students";
         $result = mysqli_query($conn,$total_pages_sql);
@@ -491,13 +491,18 @@ span {
                           </style>";
                          
                         } ?>
-                        <button id="details" style="padding: 10px 30px;
+                      </form>
+                      <button id="details" style="padding: 10px 30px;
                       border: none;
                       outline: none;
                       border-radius: 5px;
                       font-size: 2vh;
-                      width:16vw;
+                      width:14vw;
                       height:5vh;
+                      display:flex;
+                      align-content: center;
+                      justify-content: center;
+                      align-items: center;
                       font-weight: 500;
                       border: 1px solid #999;
                       color: #999;
@@ -655,24 +660,23 @@ span {
                     ?>
                    </tbody>
                 </table>
-    
-    <ul class="pagination pagination-lg" style="justify-content: space-evenly;">
-      <button><li><a href="?pageno=1">First</a></li></button>
-      <button><li class="<?php if($pageno <= 1){ echo 'disabled'; } ?>">
+    <ul class="pagination pagination-lg" style="justify-content: space-evenly; display: flex;flex-wrap: wrap;">
+      <li><a href="?pageno=1"><button style="color:#009aff">First</button></a></li>
+      <li class="<?php if($pageno <= 1){ echo 'disabled'; } ?>">
         <a
           href="<?php if($pageno <= 1){ echo '#'; } else { echo "
           ?pageno=".($pageno - 1); } ?>"
-          >Previous</a
+          ><button style="color:#009aff">Previous</button></a
         >
-      </li></button>
-      <button><li class="<?php if($pageno >= $total_pages){ echo 'disabled'; } ?>">
+      </li>
+      <li class="<?php if($pageno >= $total_pages){ echo 'disabled'; } ?>">
         <a
           href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "
           ?pageno=".($pageno + 1); } ?>"
-          >Next</a
+          ><button style="color:#009aff">Next</button></a
         >
-      </li></button>
-      <button><li><a href="?pageno=<?php echo $total_pages; ?>">Last</a></li></button>
+      </li>
+      <li><a href="?pageno=<?php echo $total_pages; ?>"><button style="color:#009aff">Last</button></a></li>
     </ul>
 <!-- Pagination Button Css -->
 <style>

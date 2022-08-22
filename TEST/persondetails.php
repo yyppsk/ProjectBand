@@ -2,7 +2,6 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Person details : Lost and Found</title>
   <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:600|Source+Sans+Pro' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
@@ -80,9 +79,9 @@ body {
   animation-timing-function: linear;
 }
 body::before {
-  content: "Person Details";
+  content: "Candidate Profile";
   font-size: 8rem;
-  font-weight: 100;
+  font-weight: 400;
   font-style: normal;
 }
   </style>
@@ -109,33 +108,148 @@ if(isset($_POST['submit'])){
           $_SESSION['desc'] = $row['points'];
           $_SESSION['id'] = $row['id'];
           $_SESSION['newbie'] = $row['newbie'];
-      }  
-    }
-    ?>
-<div class="container">
-  <section id="Profile">
+          $_SESSION['plot'] = $row['plot'];
+          $_SESSION['favlang'] = $row['language'];
+          $_SESSION['favtech'] = $row['tech'];
+          $_SESSION['cpp'] = $row['cpp'];
+          $_SESSION['clang'] = $row['clang'];
+          $_SESSION['java'] = $row['java'];
+          $_SESSION['javascript'] = $row['javascript'];
+          $_SESSION['php'] = $row['php'];
+          $_SESSION['python'] = $row['python'];
+      }
+      echo "<title>",$_SESSION['name'];}?>'s Details</title>
+<div class="container" style="<?php if($_SESSION["desc"] >=3000) {
+                              echo 'background-image: linear-gradient(90deg,#aa0000,#b15da2,#aa0000,#b15da2);
+                              background-size: 300% 100%;';
+                              }
+                              else if($_SESSION['desc'] <= 2999 && $_SESSION['desc'] >=2600) {
+                              echo 'background-image: linear-gradient(90deg,#ff2400,#b15da2,#ff2400,#b15da2);
+                              background-size: 300% 100%;';
+                              }
+                              else if($_SESSION['desc'] <= 2599 && $_SESSION['desc'] >=2400) {
+                                echo 'background-image: linear-gradient(90deg,#ff7777,#b15da2,#ff7777,#b15da2);
+                                background-size: 300% 100%;';
+                                }
+                                else if($_SESSION['desc'] <= 2399 && $_SESSION['desc'] >=2300) {
+                                  echo 'background-image: linear-gradient(90deg,#b660cd,#b15da2,#b660cd,#b15da2);
+                                  background-size: 300% 100%;';
+                                  }
+                                  else if($_SESSION['desc'] <= 2299 && $_SESSION['desc'] >=2100) {
+                                    echo 'background-image: linear-gradient(90deg,#aaaaff,#b15da2,#aaaaff,#b15da2);
+                                    background-size: 300% 100%;';
+                                    }
+                                    else if($_SESSION['desc'] <= 2099 && $_SESSION['desc'] >=1900) {
+                                      echo 'background-image: linear-gradient(90deg,#800080,#b15da2,#800080,#b15da2);
+                                      background-size: 300% 100%;';
+                                      }
+                                      else if($_SESSION['desc'] <= 1899 && $_SESSION['desc'] >=1600) {
+                                        echo 'background-image: linear-gradient(90deg,#0101a2,#b15da2,#0101a2,#b15da2);
+                                        background-size: 300% 100%;';
+                                        }
+                                        else if($_SESSION['desc'] <= 1599 && $_SESSION['desc'] >=1400) {
+                                          echo 'background-image: linear-gradient(90deg,#03a8a8,#b15da2,#03a8a8,#b15da2);
+                                          background-size: 300% 100%;';
+                                          }
+                                          else if($_SESSION['desc'] <= 1399 && $_SESSION['desc'] >=1200) {
+                                            echo 'background-image: linear-gradient(90deg,#008000,#b15da2,#008000,#b15da2);
+                                            background-size: 300% 100%;';
+                                            }
+                                            else if($_SESSION['desc'] <= 1199) {
+                                              echo 'background-image: linear-gradient(90deg,#808080,#b15da2,#808080,#b15da2);
+                                              background-size: 300% 100%;';
+                                              }
+                              ?>">
+
+  <section id="Profile" style="<?php if($_SESSION["desc"] >=3000) {
+                              echo 'background-image: linear-gradient(90deg,#aa0000,#b15da2,#aa0000,#b15da2);
+                              background-size: 300% 100%;';
+                              }
+                              else if($_SESSION['desc'] <= 2999 && $_SESSION['desc'] >=2600) {
+                                echo 'background-image: linear-gradient(90deg,#ff2400,#b15da2,#ff2400,#b15da2);
+                                background-size: 300% 100%;';
+                                }
+                                else if($_SESSION['desc'] <= 2599 && $_SESSION['desc'] >=2400) {
+                                  echo 'background-image: linear-gradient(90deg,#ff7777,#b15da2,#ff7777,#b15da2);
+                                  background-size: 300% 100%;';
+                                  }
+                                  else if($_SESSION['desc'] <= 2399 && $_SESSION['desc'] >=2300) {
+                                    echo 'background-image: linear-gradient(90deg,#b660cd,#b15da2,#b660cd,#b15da2);
+                                    background-size: 300% 100%;';
+                                    }
+                                    else if($_SESSION['desc'] <= 2299 && $_SESSION['desc'] >=2100) {
+                                      echo 'background-image: linear-gradient(90deg,#aaaaff,#b15da2,#aaaaff,#b15da2);
+                                      background-size: 300% 100%;';
+                                      }
+                                      else if($_SESSION['desc'] <= 2099 && $_SESSION['desc'] >=1900) {
+                                        echo 'background-image: linear-gradient(90deg,#800080,#b15da2,#800080,#b15da2);
+                                        background-size: 300% 100%;';
+                                        }
+                                        else if($_SESSION['desc'] <= 1899 && $_SESSION['desc'] >=1600) {
+                                          echo 'background-image: linear-gradient(90deg,#0101a2,#b15da2,#0101a2,#b15da2);
+                                          background-size: 300% 100%;';
+                                          }
+                                          else if($_SESSION['desc'] <= 1599 && $_SESSION['desc'] >=1400) {
+                                            echo 'background-image: linear-gradient(90deg,#03a8a8,#b15da2,#03a8a8,#b15da2);
+                                            background-size: 300% 100%;';
+                                            }
+                                            else if($_SESSION['desc'] <= 1399 && $_SESSION['desc'] >=1200) {
+                                              echo 'background-image: linear-gradient(90deg,#008000,#b15da2,#008000,#b15da2);
+                                              background-size: 300% 100%;';
+                                              }
+                                              else if($_SESSION['desc'] <= 1199) {
+                                                echo 'background-image: linear-gradient(90deg,#808080,#b15da2,#808080,#b15da2);
+                                                background-size: 300% 100%;';
+                                                }
+                              ?>">
+
     <div id="user" class="text-center">
       <div id="img"><img id="img" src="<?php echo $_SESSION['image'];?>"></div>
       <div id="name">
         <h1><?php echo $_SESSION['name'];?></h1>
         <div class="progress">
+        <div class="progress">
               <?php if($_SESSION['desc'] >=3000) {
-                echo '<div role="progressbar" style="background: #a00;width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>TOP BAND</b></div>';
+                echo '<div role="progressbar" style="background: #a00;width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>TOP #1 BAND [ETERNAL FLAME]</b></div>';
               }
-              else{
-                  echo '<div role="progressbar" style="width: 100%;" class="progress-bar">100%</div>';
-                }
+                else if ($_SESSION['desc'] <= 2999 && $_SESSION['desc'] >=2600) {
+                  echo '<div role="progressbar" style="background: #FF2400;width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>TOP #2 BAND [INFINITY]</b></div>';
+              }
+              else if ($_SESSION['desc'] <= 2599 && $_SESSION['desc'] >=2400) {
+                echo '<div role="progressbar" style="background: #f77;width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>TOP #3 BAND [ULTRA INSTINCT]</b></div>';
+            }
+            else if ($_SESSION['desc'] <= 2399 && $_SESSION['desc'] >=2300) {
+              echo '<div role="progressbar" style="background: #B660CD;width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>BAND</b></div>';
+          }
+          else if ($_SESSION['desc'] <= 2299 && $_SESSION['desc'] >=2100) {
+            echo '<div role="progressbar" style="background: #aaf;width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>BAND</b></div>';
+        }
+        else if ($_SESSION['desc'] <= 2099 && $_SESSION['desc'] >=1900) {
+          echo '<div role="progressbar" style="background: #800080;width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>BAND</b></div>';
+      }
+      else if ($_SESSION['desc'] <= 1899 && $_SESSION['desc'] >=1600) {
+        echo '<div role="progressbar" style="background: rgb(1,1,162,0.80);width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>BAND</b></div>';
+    }
+    else if ($_SESSION['desc'] <= 1599 && $_SESSION['desc'] >=1400) {
+      echo '<div role="progressbar" style="background: #03a8a8;width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>BAND</b></div>';
+  }
+  else if ($_SESSION['desc'] <= 1399 && $_SESSION['desc'] >=1200) {
+    echo '<div role="progressbar" style="background: #008000;width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>BAND</b></div>';
+}
+else if ($_SESSION['desc'] <= 1199) {
+  echo '<div role="progressbar" style="background:#808080;width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>[ NEW KID IN THE TOWN ] BAND</b></div>';
+}
                 ?>
             </div>
         <h4><?php echo $_SESSION['desc'],' Unique ID = ',$_SESSION['id'];?></h4>
       </div>
       <?php if($_SESSION['newbie'] == 1){
-        echo '<div id="social"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-check fa-stack-1x" title="Person is Reported Found!"></i></span></a></div><style>
+        echo '<div id="social"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-check fa-stack-1x" title="Person is Verified!"></i></span></a></div><style>
         i[class*="2x"] {
             color: green;
         }</style>';
       } else{
-        echo '<div id="social"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-times fa-stack-1x" title="Person is Reported Not Found!"></i></span></a></div>
+        echo '<div id="social"><a href="#"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-times fa-stack-1x" title="Person is Unverified!"></i></span></a></div>
         <style>
         i[class*="2x"] {
             color: red;
@@ -150,23 +264,93 @@ if(isset($_POST['submit'])){
           <li role="presentation"><a href="#skills" role="tab" data-toggle="tab"><i class="fa fa-eye fa-3x"></i></a></li>
           <li role="presentation"><a href="#contact" role="tab" data-toggle="tab"><i class="fa fa-envelope-o fa-3x"></i></a></li>
         </ul>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
         <div class="tab-content">
           <div id="about" role="tabpanel" class="tab-pane fade">
-            <h3>Details Provided:</h3>
-            <p style=""><strong><?php echo $_SESSION['desc'];?></strong></p>
-            <p style="font-size: 26px;
-    color: cornflowerblue;"><strong>Reported On : <?php echo $_SESSION['time'];?></strong></p>
+            <h2>Details of <?php echo $_SESSION['name']; ?>:</h2>
+            <h3>Band Score : <?php echo $_SESSION['desc'];?></p></h2>
+            <h3>My favorite languages :</h3>
+            <p style="font-size: 22px;
+    color: #fffffff5;"><?php echo $_SESSION['favlang'];?></p>
+            <style>
+              .grid-container {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                background-color: #ead3d3;
+                padding: 10px;
+                margin: -50px;
+              }
+              .grid-item {
+                background-color: rgb(255 255 255 / 98%);
+                border: 1px solid rgba(0, 0, 0, 0.8);
+                padding: 20px;
+                font-size: 30px;
+                text-align: center;
+              }
+              </style>
+            <div class="grid-container">
+              <div class="grid-item"><?php if($_SESSION['clang']){ echo '<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" style="max-height: 133px;min-height: 133px;"/>';} else { echo '
+            <i class="devicon-c-plain" style="font-size : 70px;"></i>
+          ','Inactive';}?></div>
+              <div class="grid-item"><?php if($_SESSION['cpp']){ echo '<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" style="max-height: 133px;min-height: 133px;"/>';} else { echo '
+            <i class="devicon-cplusplus-plain" style="font-size : 70px;"></i>
+            ','Inactive';}?></div>
+            <div class="grid-item"><?php if($_SESSION['java']){ echo '<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" style="max-height: 133px;min-height: 133px;"/>';} else { echo '
+            <i class="devicon-java-plain" style="font-size : 70px;"></i>
+          ','Inactive';}?></div>
+            <div class="grid-item"><?php if($_SESSION['python']){ echo '<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" style="max-height: 133px;min-height: 133px;"/>';} else { echo '
+            <i class="devicon-python-plain" style="font-size : 70px;"></i>
+          ','Inactive';}?></div>
+            <div class="grid-item"><?php if($_SESSION['javascript']){ echo '<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" style="max-height: 133px;min-height: 133px;"/>';} else { echo '
+            <i class="devicon-javascript-plain" style="font-size : 70px;"></i>
+          ','Inactive';}?></div>
+            <div class="grid-item"><?php if($_SESSION['php']){ echo '<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" style="max-height: 133px;min-height: 133px;"/>';} else { echo '
+            <i class="devicon-php-plain" style="font-size : 70px;"></i>
+          ','Inactive';}?></div>
+            </div>
+            <p style="font-size: 22px;
+    color: #fffffff5; margin-top: 70px;"><strong>Achievements Unlocked</strong></p>
+            <h3>My favorite technologies :</h3>
+            <p style="font-size: 22px;
+    color: #fffffff5;"><?php echo $_SESSION['favtech'];?></p>
+          <div>
+            <?php echo $_SESSION['plot']; ?>
           </div>
           <div id="skills" role="tabpanel" class="tab-pane fade">
-            <h3>ID Verification</h3>
-            <h4>ID Verification Process</h4>
+            <h3><?php echo $_SESSION['name']; ?>'s Band</h3>
+            <h4><?php echo $_SESSION['name']; ?> is Verified & Band score is <?php echo $_SESSION['desc']; ?></h4>
             <div class="progress">
               <?php if($_SESSION['desc'] >=3000) {
-                echo '<div role="progressbar" style="background: #a00;width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>TOP BAND</b></div>';
+                echo '<div role="progressbar" style="background: #a00;width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>TOP #1 BAND [ETERNAL FLAME]</b></div>';
               }
-              else{
-                  echo '<div role="progressbar" style="width: 100%;" class="progress-bar">100%</div>';
-                }
+                else if ($_SESSION['desc'] <= 2999 && $_SESSION['desc'] >=2600) {
+                  echo '<div role="progressbar" style="background: #FF2400;width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>TOP #2 BAND [INFINITY]</b></div>';
+              }
+              else if ($_SESSION['desc'] <= 2599 && $_SESSION['desc'] >=2400) {
+                echo '<div role="progressbar" style="background: #f77;width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>TOP #3 BAND [ULTRA INSTINCT]</b></div>';
+            }
+            else if ($_SESSION['desc'] <= 2399 && $_SESSION['desc'] >=2300) {
+              echo '<div role="progressbar" style="background: #B660CD;width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>BAND</b></div>';
+          }
+          else if ($_SESSION['desc'] <= 2299 && $_SESSION['desc'] >=2100) {
+            echo '<div role="progressbar" style="background: #aaf;width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>BAND</b></div>';
+        }
+        else if ($_SESSION['desc'] <= 2099 && $_SESSION['desc'] >=1900) {
+          echo '<div role="progressbar" style="background: #800080;width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>BAND</b></div>';
+      }
+      else if ($_SESSION['desc'] <= 1899 && $_SESSION['desc'] >=1600) {
+        echo '<div role="progressbar" style="background: rgb(1,1,162,0.80);width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>BAND</b></div>';
+    }
+    else if ($_SESSION['desc'] <= 1599 && $_SESSION['desc'] >=1400) {
+      echo '<div role="progressbar" style="background: #03a8a8;width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>BAND</b></div>';
+  }
+  else if ($_SESSION['desc'] <= 1399 && $_SESSION['desc'] >=1200) {
+    echo '<div role="progressbar" style="background: #008000;width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>BAND</b></div>';
+}
+else if ($_SESSION['desc'] <= 1199) {
+  echo '<div role="progressbar" style="background:#808080;width: 100%; color:#fff;font-size: 20px;" class="progress-bar" background-color:=""><b>BAND</b></div>';
+}
                 ?>
             </div>
             </div>
@@ -236,18 +420,5 @@ if(isset($_POST['submit'])){
     
   </p>
 </div>
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/61f9619fb9e4e21181bcf7a7/1fqr2an0a';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
 </body>
 </html>
